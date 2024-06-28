@@ -23,7 +23,7 @@ body{
     justify-content: center;
     align-items: center; 
     background-color: rgb(1, 1, 32);
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .heading{
@@ -47,7 +47,7 @@ body{
 .calculator-keys{
     margin-bottom: -65px;
     border-bottom: 13px solid rgb(1, 1, 41);
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: rgb(1,1,41)
 } 
 
