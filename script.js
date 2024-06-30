@@ -3,7 +3,9 @@ let brackets = document.getElementById("brackets");
 let percentage = document.getElementById("percentage");
 let divide = document.getElementById("divide");
 
-let one = document.getElementById("clear");
+let one = document.getElementById("clear").addEventListener(click, function(){
+    alert(1);
+});
 let two = document.getElementById("brackets");
 let three = document.getElementById("percentage");
 let multiply = document.getElementById("divide");
@@ -24,6 +26,6 @@ let tripleZero = document.getElementById("percentage");
 let result = document.getElementById("divide");
 
 
-one.addEventListener(click, function(){
-    document.getElementById("input");
-})
+// addEventListener(click, function(){
+//     alert(1);
+// })
