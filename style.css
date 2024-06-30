@@ -29,18 +29,18 @@ body{
 .heading{
     /* margin-top: -100px;
     align-content: ; */
-    margin-top: -50px;
+    margin-top: -55px;
     color: white;
     text-align: center;
 }
 
-.input{
+/* .input{
    border: none;
    width: 350px;
    padding: 20px 0px;
    font-size: large;
-   /* background-color: rgb(1, 1, 32); */
-}
+   background-color: rgb(1, 1, 32); 
+} */
 
 .borderline{
     border-top: 1px solid rgb(64, 64, 180);;
@@ -48,7 +48,7 @@ body{
     /* padding: 10px;
     margin-left: 14px;
     margin-right: 14px; */
-    margin-bottom: -300px;
+    margin-bottom: -185px;
     background-color: rgb(5, 5, 24);
 }
 
