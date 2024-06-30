@@ -11,41 +11,49 @@
         <div class="heading">
             <h6>Calculator</h6>
         </div>
+        <div class="input-class">
+            <form action="post">
+                <input type="text" id="input" class="input" name="input">
+            </form>
+        </div>
         <div class="borderline"></div>
         <div class="calculator-keys">
             <div class="row">
-            <button class="calculator-key calculator-clear">AC</button>
-            <button class="calculator-key calculator-operator">()</button>
-            <button class="calculator-key calculator-operator">%</button>
-            <button class="calculator-key calculator-operator">/</button>
+            <button id="clear" class="calculator-key calculator-clear">AC</button>
+            <button id="brackets" class="calculator-key calculator-operator">()</button>
+            <button id="percentage" class="calculator-key calculator-operator">%</button>
+            <button id="divide" class="calculator-key calculator-operator">/</button>
             </div>
             <div class="row">
-            <button class="calculator-key">1</button>
-            <button class="calculator-key">2</button>
-            <button class="calculator-key">3</button>
-            <button class="calculator-key calculator-operator">x</button>   
+            <button id="one" class="calculator-key">1</button>
+            <button id="two" class="calculator-key">2</button>
+            <button id="three" class="calculator-key">3</button>
+            <button id="multiply" class="calculator-key calculator-operator">x</button>   
             </div>
             <div class="row">           
-            <button class="calculator-key">4</button>
-            <button class="calculator-key">5</button>
-            <button class="calculator-key">6</button>               
-            <button class="calculator-key calculator-operator">+</button>
+            <button id="four" class="calculator-key">4</button>
+            <button id="five" class="calculator-key">5</button>
+            <button id="six" class="calculator-key">6</button>               
+            <button id="add" class="calculator-key calculator-operator">+</button>
             </div>
             <div class="row">
-            <button class="calculator-key">7</button>
-            <button class="calculator-key">8</button>                
-            <button class="calculator-key">9</button>
-            <button class="calculator-key calculator-operator">-</button>
+            <button id="seven" class="calculator-key">7</button>
+            <button id="eight" class="calculator-key">8</button>                
+            <button id="nine" class="calculator-key">9</button>
+            <button id="subtract" class="calculator-key calculator-operator">-</button>
             </div>
             <div class="row">
-            <button class="calculator-key">.</button>
-            <button class="calculator-key">0</button>
-            <button class="calculator-key">000</button>
-            <button class="calculator-key calculator-result">=</button>
+            <button id="decimal-point" class="calculator-key">.</button>
+            <button id="zero" class="calculator-key">0</button>
+            <button id="triple-zero" class="calculator-key">000</button>
+            <button id="result" class="calculator-key calculator-result">=</button>
             </div>
         </div>
 
         </div>
-    </div>  
+    </div> 
+    
+    
+    <script src="script.js"></script>
 </body>
 </html>
