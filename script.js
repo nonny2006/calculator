@@ -1,29 +1,77 @@
+let left;
+let operator = "";
+let right;
+
+function storeNumber(num){
+    //check if the left variable is stored
+    //if the variable is not stored, store a variable
+    //else store in the right
+    if(left === null || left === undefined) {
+        left = num;
+    }else{
+        right = num;
+    }
+    displayToScreen();
+}
+
+function storeOperator(op){
+    operator = op;
+    displayToScreen();
+}
+
+function displayToScreen(){
+    document.getElementById("screen").textContent = `${left ?? ""} ${operator ?? ""} ${right ?? ""}`;
+}
+
+function calculateResult(){
+    //compare the operators using if statement
+    //if operator = +, return left+right;
+    //if operator = -, return left-right;
+    //if operator = *, return left*right;
+    //if operator = /, return left/right
+
+    let result;
+    
+    if(operator == "+"){
+        result = (left+right);
+    }if(operator == "-"){
+        result = (left-right);
+    }if(operator == "*"){
+        result = (left*right);
+    }if(operator == "/"){
+        result = (left/right);
+    }
+    document.getElementById("screen").textContent = `${left ?? ""} ${operator ?? ""} ${right ?? ""} = ${result} `;
+
+}
+
 let clear = document.getElementById("clear");
 let brackets = document.getElementById("brackets");
 let percentage = document.getElementById("percentage");
-let divide = document.getElementById("divide");
+let divide = document.getElementById("divide").addEventListener("click", () =>  storeOperator("/"));
 
-let one = document.getElementById("clear").addEventListener(click, function(){
-    alert(1);
-});
-let two = document.getElementById("brackets");
-let three = document.getElementById("percentage");
-let multiply = document.getElementById("divide");
+let one = document.getElementById("one").addEventListener("click",() => storeNumber(1));
+let two = document.getElementById("two").addEventListener("click", () => storeNumber(2));
+let three = document.getElementById("three").addEventListener("click", () => storeNumber(3));
+let multiply = document.getElementById("multiply").addEventListener("click", () => storeOperator("*"));
 
-let four = document.getElementById("clear");
-let five = document.getElementById("brackets");
-let six = document.getElementById("percentage");
-let add = document.getElementById("divide");
+let four = document.getElementById("four").addEventListener("click", () => storeNumber(4));
+let five = document.getElementById("five").addEventListener("click", () => storeNumber(5));
+let six = document.getElementById("six").addEventListener("click", () => storeNumber(6));
+let add = document.getElementById("add").addEventListener("click", () => storeOperator("+"));
 
-let seven = document.getElementById("clear");
-let eight = document.getElementById("brackets");
-let nine = document.getElementById("percentage");
-let subtract = document.getElementById("divide");
+let seven = document.getElementById("seven").addEventListener("click", () => storeNumber(7));
+let eight = document.getElementById("eight").addEventListener("click", () => storeNumber(8));
+let nine = document.getElementById("nine").addEventListener("click", () => storeNumber(9));
+let subtract = document.getElementById("subtract").addEventListener("click", () => storeOperator("-"));
 
-let decimalPoint = document.getElementById("clear");
-let zero = document.getElementById("brackets");
-let tripleZero = document.getElementById("percentage");
-let result = document.getElementById("divide");
+let decimalPoint = document.getElementById("decimalPoint");
+let zero = document.getElementById("zero").addEventListener("click", () => storeNumber(0));
+let tripleZero = document.getElementById("tripleZero");
+let result = document.getElementById("result").addEventListener("click", calculateResult);
+
+
+// let screen = document.getElementById("screen");
 
 
 // addEventListener(click, function(){
