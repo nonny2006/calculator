@@ -42,10 +42,15 @@ function calculateResult(){
         result = (left/right);
     }
     document.getElementById("screen").textContent = `${left ?? ""} ${operator ?? ""} ${right ?? ""} = ${result} `;
-
 }
 
-let clear = document.getElementById("clear");
+function clearScreen(){
+    document.getElementById("screen").textContent = "";
+}
+
+
+
+let clear = document.getElementById("clear").addEventListener("click", clearScreen);
 let brackets = document.getElementById("brackets");
 let percentage = document.getElementById("percentage");
 let divide = document.getElementById("divide").addEventListener("click", () =>  storeOperator("/"));
