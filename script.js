@@ -45,7 +45,7 @@ function calculateResult(){
 }
 
 function clearScreen(){
-    document.getElementById("screen").textContent = "";
+    document.getElementById("screen").textContent = `${left =""} ${operator = ""} ${right = ""}`;
 }
 
 
