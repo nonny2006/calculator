@@ -49,9 +49,11 @@ function clearScreen(){
     //change the left variable back to its original state
     //do the same for the operator and the right
     //assign them to the screen content
-    right = "";
+    left = undefined;
+    right = undefined;
     operator = "";
-    document.getElementById("screen").textContent = `${left} ${operator} ${right}`;
+
+    document.getElementById("screen").textContent = `${left ?? ""} ${operator ?? ""} ${right ?? ""}`;
 }
 
 
