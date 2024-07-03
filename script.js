@@ -1,5 +1,5 @@
 let left;
-let operator = "";
+let operator;
 let right;
 
 function storeNumber(num){
@@ -45,7 +45,13 @@ function calculateResult(){
 }
 
 function clearScreen(){
-    document.getElementById("screen").textContent = `${left =""} ${operator = ""} ${right = ""}`;
+    //change the variables back to their original state
+    //change the left variable back to its original state
+    //do the same for the operator and the right
+    //assign them to the screen content
+    right = "";
+    operator = "";
+    document.getElementById("screen").textContent = `${left} ${operator} ${right}`;
 }
 
 
