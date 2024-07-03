@@ -55,8 +55,11 @@ function clearScreen(){
 
     document.getElementById("screen").textContent = `${left ?? ""} ${operator ?? ""} ${right ?? ""}`;
 }
-
-
+//to store a function, it has to be turned to a string cause of the format for the local storage
+//the key: storingCalculations
+//the value: calculateResult.toString()
+//this particular function is used because, this is the function where the calculation is done and displayed to the screen
+localStorage.setItem('storingCalculations',calculateResult.toString());
 
 let clear = document.getElementById("clear").addEventListener("click", clearScreen);
 let brackets = document.getElementById("brackets");
