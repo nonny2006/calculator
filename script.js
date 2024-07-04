@@ -42,6 +42,7 @@ function calculateResult(){
         result = (left/right);
     }
     document.getElementById("screen").textContent = `${left ?? ""} ${operator ?? ""} ${right ?? ""} = ${result} `;
+    storeResults(`${left ?? ""} ${operator ?? ""} ${right ?? ""} = ${result}`);
 }
 
 function clearScreen(){
@@ -55,11 +56,30 @@ function clearScreen(){
 
     document.getElementById("screen").textContent = `${left ?? ""} ${operator ?? ""} ${right ?? ""}`;
 }
+
+function storeResults(result){
+    //take in a result that will be stored in the local storage
+    //check if the result array exists in local storage is null
+    //if it doesnt exist, create a new array with the result and store it in local sorage
+    //if it exists, update the array and update local storage
+    let history = localStorage.getItem('history');
+    console.log(history);
+    if(history === null){
+        const newHistory = [result];
+        localStorage.setItem('history', JSON.stringify(newHistory));
+    }else{
+        let existingHistory = JSON.parse(history);
+        console.log(typeof (existingHistory));
+        let updatedHistory = [...existingHistory, result];
+        localStorage.setItem('history', JSON.stringify(updatedHistory));
+    }
+
+}
 //to store a function, it has to be turned to a string cause of the format for the local storage
 //the key: storingCalculations
 //the value: calculateResult.toString()
 //this particular function is used because, this is the function where the calculation is done and displayed to the screen
-localStorage.setItem('storingCalculations',calculateResult.toString());
+// localStorage.setItem('storingCalculations',calculateResult.toString());
 
 let clear = document.getElementById("clear").addEventListener("click", clearScreen);
 let brackets = document.getElementById("brackets");
