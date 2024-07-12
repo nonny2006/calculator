@@ -2,6 +2,18 @@ let left;
 let operator;
 let right;
 
+let button = document.getElementById("btn").addEventListener('click', openPopup);
+let okButton = document.getElementById("ok-btn").addEventListener('click', closePopup);
+let popup = document.getElementById("pop-up");
+
+function openPopup(){
+    popup.classList.add("open-popup");
+}
+
+function closePopup(){
+    popup.classList.remove("open-popup");
+}
+
 function storeNumber(num){
     //check if the left variable is stored
     //if the variable is not stored, store a variable
@@ -57,6 +69,7 @@ function clearScreen(){
     document.getElementById("screen").textContent = `${left ?? ""} ${operator ?? ""} ${right ?? ""}`;
 }
 
+
 function storeResults(result){
     //take in a result that will be stored in the local storage
     //check if the result array exists in local storage is null
@@ -73,7 +86,25 @@ function storeResults(result){
         let updatedHistory = [...existingHistory, result];
         localStorage.setItem('history', JSON.stringify(updatedHistory));
     }
+}
 
+//create another function to display the content of the local storage in the popup
+function displayLocalStorageContent(){
+    //retrieve the local storage data
+    let content = localStorage.getItem('history');
+
+    //get the output div element
+    const outputDiv = document.getElementById("output");
+    
+    //use an if statement to determine if there is any content in the local storage or not
+
+    if (content){
+        //display the content in the output div
+        outputDiv.textContent = content;
+    }else{
+        //case for when there is no content in the local storage
+         outputDiv.textContent = "No content was found in the local storsge";
+    }
 }
 //to store a function, it has to be turned to a string cause of the format for the local storage
 //the key: storingCalculations
