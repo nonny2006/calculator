@@ -79,18 +79,23 @@ function storeResults(result){
     //if it doesnt exist, create a new array with the result and store it in local sorage
     //if it exists, update the array and update local storage
     let history = localStorage.getItem('history');
+
+    let existingHistory;
     // console.log(history);
     if(history === null){
-        const newHistory = [result];
+        existingHistory = [result];
         // localStorage.setItem('history', JSON.stringify(newHistory));
-        localStorage.setItem('history', JSON.parse(newHistory));
+        // localStorage.setItem('history', JSON.parse(newHistory));
     }else{
-        let existingHistory = JSON.parse(history);
+        existingHistory = JSON.parse(history);
         // console.log(typeof (existingHistory));
         existingHistory.push(result);
-        // let updatedHistory = [...existingHistory, result];
-        localStorage.setItem('history', JSON.parse(existingHistory));
+        //let updatedHistory = [...existingHistory, result];
+        // localStorage.setItem('history', JSON.parse(existingHistory));
     }
+    localStorage.setItem('history', JSON.stringify(existingHistory));
+
+    displayResults();
 }
 
 
@@ -98,8 +103,22 @@ function displayResults() {
     // Retrieve existing history from localStorage
     let history = localStorage.getItem('history');
 
+    let existingHistory;
+
     // Parse the history array from JSON string format
-    let existingHistory = history ? JSON.parse(history) : [];
+    // 
+    if(history === null){
+        //  const newHistory = [result];
+         existingHistory = [];
+        // localStorage.setItem('history', JSON.stringify(newHistory));
+        // localStorage.setItem('history', JSON.parse(newHistory));
+    }else{
+        existingHistory = JSON.parse(history);
+        // console.log(typeof (existingHistory));
+        // existingHistory.push(result);
+        // let updatedHistory = [...existingHistory, result];
+        //  localStorage.setItem('history', JSON.parse(existingHistory));
+    }
 
     // Get the DOM element where the list will be displayed
     let resultList = document.getElementById('resultList');
@@ -108,16 +127,16 @@ function displayResults() {
     resultList.innerHTML = '';
 
     // Loop through the existing history array and create list items
-    existingHistory.forEach((item, index) => {
+    for (let index = 0; index < existingHistory.length; index++)  {
         // Create a list item element
         let li = document.createElement('li');
         
         // Set the text content of the list item to display the result
-        li.textContent = `Result ${index + 1}: ${JSON.stringify(item)}`;
+        li.textContent = `Result ${index + 1}: ${JSON.stringify(existingHistory[index])}`;
         
         // Append the list item to the result list
         resultList.appendChild(li);
-    });
+    };
 }
 
 
@@ -140,11 +159,11 @@ function displayLocalStorageContent(){
 
         let ul = document.createElement('ul');
 
-        existingHistory.forEach((item, index) => {
+        for (let index = 0; index < existingHistory.length; index++) {
             let li = document.createElement('li');
-            li.textContent = `Result ${index + 1}: ${JSON.stringify(item)}`;
+            li.textContent = `Result ${index + 1}: ${JSON.stringify(existingHistory[index])}`;
             ul.appendChild(li);
-        });
+        };
 
         // Append the list to the output div
         outputDiv.appendChild(ul);
@@ -153,7 +172,6 @@ function displayLocalStorageContent(){
         //case for when there is no content in the local storage
          outputDiv.textContent = "No content was found in the local storage";
     }
-    displayResults();
 }
 
 
