@@ -8,7 +8,10 @@ let popup = document.getElementById("pop-up");
 
 function openPopup(){
     popup.classList.add("open-popup");
+    displayLocalStorageContent();
 }
+
+
 
 function closePopup(){
     popup.classList.remove("open-popup");
@@ -76,17 +79,48 @@ function storeResults(result){
     //if it doesnt exist, create a new array with the result and store it in local sorage
     //if it exists, update the array and update local storage
     let history = localStorage.getItem('history');
-    console.log(history);
+    // console.log(history);
     if(history === null){
         const newHistory = [result];
-        localStorage.setItem('history', JSON.stringify(newHistory));
+        // localStorage.setItem('history', JSON.stringify(newHistory));
+        localStorage.setItem('history', JSON.parse(newHistory));
     }else{
         let existingHistory = JSON.parse(history);
-        console.log(typeof (existingHistory));
-        let updatedHistory = [...existingHistory, result];
-        localStorage.setItem('history', JSON.stringify(updatedHistory));
+        // console.log(typeof (existingHistory));
+        existingHistory.push(result);
+        // let updatedHistory = [...existingHistory, result];
+        localStorage.setItem('history', JSON.parse(existingHistory));
     }
 }
+
+
+function displayResults() {
+    // Retrieve existing history from localStorage
+    let history = localStorage.getItem('history');
+
+    // Parse the history array from JSON string format
+    let existingHistory = history ? JSON.parse(history) : [];
+
+    // Get the DOM element where the list will be displayed
+    let resultList = document.getElementById('resultList');
+
+    // Clear any existing list items
+    resultList.innerHTML = '';
+
+    // Loop through the existing history array and create list items
+    existingHistory.forEach((item, index) => {
+        // Create a list item element
+        let li = document.createElement('li');
+        
+        // Set the text content of the list item to display the result
+        li.textContent = `Result ${index + 1}: ${JSON.stringify(item)}`;
+        
+        // Append the list item to the result list
+        resultList.appendChild(li);
+    });
+}
+
+
 
 //create another function to display the content of the local storage in the popup
 function displayLocalStorageContent(){
@@ -95,17 +129,35 @@ function displayLocalStorageContent(){
 
     //get the output div element
     const outputDiv = document.getElementById("output");
+
+    outputDiv.innerHTML = '';
     
     //use an if statement to determine if there is any content in the local storage or not
 
     if (content){
         //display the content in the output div
-        outputDiv.textContent = content;
+        let existingHistory = JSON.parse(content);
+
+        let ul = document.createElement('ul');
+
+        existingHistory.forEach((item, index) => {
+            let li = document.createElement('li');
+            li.textContent = `Result ${index + 1}: ${JSON.stringify(item)}`;
+            ul.appendChild(li);
+        });
+
+        // Append the list to the output div
+        outputDiv.appendChild(ul);
+        // outputDiv.textContent = content;
     }else{
         //case for when there is no content in the local storage
-         outputDiv.textContent = "No content was found in the local storsge";
+         outputDiv.textContent = "No content was found in the local storage";
     }
+    displayResults();
 }
+
+
+// displayLocalStorageContent();
 //to store a function, it has to be turned to a string cause of the format for the local storage
 //the key: storingCalculations
 //the value: calculateResult.toString()
